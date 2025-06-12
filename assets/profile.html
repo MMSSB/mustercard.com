@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Form</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="assets/must.ico" type="image/x-icon">
+
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+</head>
+<body class="dark-mode">
+  <nav>
+    <div class="navbar">
+      <img src="must.png" width="45px" alt="">
+      <div class="logo"><a href="#">Muster Card</a></div>
+      <ul class="menu">
+        <!-- From Uiverse.io by vinodjangid07 --> 
+        <span> <img src="light_mode_24dp_E8EAED.svg" alt=""></span>
+        <input type="checkbox" id="checkboxInput">
+        <label for="checkboxInput" class="toggleSwitch">
+        </label>
+        <span> <img src="dark_mode_24dp_E8EAED.svg" alt=""></span>
+        <li><a href="../index.html">Home</a></li>
+        <button class="note" id="notebtn">note</button>
+      </ul>
+    </div>
+  </nav>
+  <body class="dark-mode">
+    <div class="profile-form">
+        <h2>Update Profile</h2>
+        <form id="profile-form">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" />
+          </div>
+          <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" />
+          </div>
+          <div class="form-group">
+            <label for="faculty">Faculty:</label>
+            <input type="text" id="faculty" name="faculty" />
+          </div>
+          <div class="form-group">
+            <label for="major">Major:</label>
+            <input type="text" id="major" name="major" />
+          </div>
+          <div class="form-group">
+            <label for="profile-image">Profile Image:</label>
+            <input type="file" id="profile-image" name="profile-image" />
+            <!-- <input type="file" id="file-input" name="profile-image" class="file-input"> -->
+
+          </div>
+          <button type="submit">Save</button>
+          
+        </form>
+      </div>
+
+  <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 class="notealert">* Note *</h2>
+    </div>
+    <div class="modal-body">
+      <p>this website let you create custom card for Must university</p>
+      <p>i made this website just for fun</p>
+    </div>
+    <!-- <div class="modal-footer">
+      <h3>Modal Footer</h3> -->
+    <!-- </div> -->
+  </div>
+    <!-- Your existing HTML code -->
+<script>
+    const form = document.getElementById('profile-form');
+    const nameInput = document.getElementById('name');
+    const idInput = document.getElementById('id');
+    const facultyInput = document.getElementById('faculty');
+    const majorInput = document.getElementById('major');
+    const profileImageInput = document.getElementById('profile-image');
+  
+    // Load saved data from local storage
+    window.onload = function () {
+      const profileData = JSON.parse(localStorage.getItem('profileData'));
+      if (profileData) {
+        nameInput.value = profileData.name;
+        idInput.value = profileData.id;
+        facultyInput.value = profileData.faculty;
+        majorInput.value = profileData.major;
+      }
+    };
+  
+    // Save data to local storage on input change
+    nameInput.addEventListener('input', () => {
+      const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+      profileData.name = nameInput.value;
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+    });
+  
+    idInput.addEventListener('input', () => {
+      const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+      profileData.id = idInput.value;
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+    });
+  
+    facultyInput.addEventListener('input', () => {
+      const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+      profileData.faculty = facultyInput.value;
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+    });
+  
+    majorInput.addEventListener('input', () => {
+      const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+      profileData.major = majorInput.value;
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+    });
+  
+    profileImageInput.addEventListener('change', () => {
+      const file = profileImageInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const profileData = JSON.parse(localStorage.getItem('profileData')) || {};
+          profileData.profileImage = e.target.result; // Store base64 image
+          localStorage.setItem('profileData', JSON.stringify(profileData));
+        };
+        reader.readAsDataURL(file); // Convert image to base64
+      }
+    });
+  
+    // Save data to local storage on form submit
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const profileData = {
+        name: nameInput.value,
+        id: idInput.value,
+        faculty: facultyInput.value,
+        major: majorInput.value,
+        profileImage: profileData.profileImage || '', // Use existing image if no new one is uploaded
+      };
+      localStorage.setItem('profileData', JSON.stringify(profileData));
+      window.location.href = "index.html"; // Redirect to the card page
+    });
+  </script>
+    <script src="script.js"></script>
+      <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("notebtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+    </body>
+    </html>

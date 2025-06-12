@@ -1,0 +1,619 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+/* :root {
+  --card-background: #ffffff; /* Light mode card background */
+  /* --card-border-color: #ffffff; /*Light mode card border color */
+/* }  */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --card-background: #2b2b2b; Dark mode card background
+    --card-border-color: #2c2c2c; /* Dark mode card border color */
+  /* } */
+/* } */ 
+/* :root{
+  --main-color: #001aff;
+}
+:root {
+  --background: rgb(233, 233, 233);
+  --color: #000000;
+}
+
+
+.darko {
+  --background: #000000;
+  --color: rgb(233, 233, 233);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --color: rgb(233, 233, 233);
+  }
+}
+
+.light {
+  --background: rgb(233, 233, 233);
+  --color: #000000;
+} */
+  
+
+
+
+:root {
+  --background: rgb(233, 233, 233);
+  --color: #000000;
+  --card-background: #ffffff;
+  --card-border-color: #ffffff;
+  transition: .2s linear;
+}
+
+.dark-mode {
+  --background: #000000;
+  --color: rgb(233, 233, 233);
+  --card-background: #2b2b2b;
+  --card-border-color: #2c2c2c;
+  transition: .2s linear;
+}
+/* .dark-mode nav {
+  background: #2b2b2b;
+}
+
+.dark-mode .navbar .logo a {
+  color: rgb(233, 233, 233);
+} */
+
+/* .dark-mode .navbar .menu li a {
+  color: rgb(233, 233, 233);
+} */
+
+.dark-mode .profile-card {
+  background: #2b2b2b;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .profile-card::before {
+  background-color: #009c42;
+}
+
+.dark-mode .image {
+  background-color: #009c42;
+}
+
+.dark-mode .text-data {
+  color: rgb(233, 233, 233);
+}
+
+.dark-mode .buttons .button {
+  background-color: #009c42;
+}
+
+.dark-mode .buttons .button:hover {
+  background-color: rgb(14, 131, 241);
+}
+
+
+
+
+
+ body {
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+} 
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 470px;
+  width: 100%;
+  background: var(--card-background);
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 90px;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 36%;
+  width: 100%;
+  border-radius: 24px 24px 0 0;
+  background-color: #009c42;
+}
+
+.image {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  background-color: #009c42;
+  padding: 3px;
+  margin-bottom: 10px;
+}
+
+.image .profile-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.profile-card .text-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color);
+}
+
+.text-data .name {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.text-data .job {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.profile-card .media-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.media-buttons .link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  margin: 0 8px;
+  background-color: #009c42;
+  text-decoration: none;
+}
+
+.profile-card .buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.buttons .button {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 24px;
+  margin: 0 10px;
+  padding: 8px 24px;
+  background-color: #009c42;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttons .button:hover {
+  background-color: rgb(14, 131, 241)
+}
+
+.profile-card .analytics {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.analytics .data {
+  display: flex;
+  align-items: center;
+  color: #333;
+  padding: 0 20px;
+  border-right: 2px solid #e7e7e7;
+}
+
+.data i {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.data:last-child {
+  border-right: none;
+}
+
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+/* To hide the checkbox */
+#checkboxInput {
+  display: none;
+}
+
+.toggleSwitch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  cursor: pointer;
+  transition-duration: .2s;
+}
+
+.toggleSwitch::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  left: 5px;
+  background-color: transparent;
+  border-radius: 50%;
+  transition-duration: .2s;
+  box-shadow: 5px 2px 7px rgba(8, 8, 8, 0.26);
+  border: 5px solid #009c42;
+}
+
+#checkboxInput:checked+.toggleSwitch::after {
+  transform: translateX(100%);
+  transition-duration: .2s;
+  background-color: white;
+}
+/* Switch background change */
+#checkboxInput:checked+.toggleSwitch {
+  background-color: #000000;
+  transition-duration: .2s;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+nav{
+ position: fixed;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 75px;
+ background: #009c42;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+nav .navbar{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 100%;
+ max-width: 90%;
+ background: #009c42;
+ margin: auto;
+}
+nav .navbar .logo a{
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+}
+nav .navbar .menu{
+  display: flex;
+}
+.navbar .menu li{
+  list-style: none;
+  margin: 0 15px;
+}
+.navbar .menu li a{
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+}
+/* section{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #96c7e8;
+  font-size: 70px;
+}
+#Home{
+  background: #fff;
+}
+#About{
+  background: #f2f2f2;
+}
+#Category{
+  background: #e6e6e6;
+}
+#Latest{
+  background: #fff;
+}
+#Contact{
+  background: #f2f2f2;
+}
+#Feedback{
+  background: #e6e6e6;
+}
+.button a{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: #fff;
+  background: #2980b9;
+  padding: 7px 12px;;
+  font-size: 18px;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.15);
+} */
+
+
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 470px;
+  width: 100%;
+  background: var(--card-background);
+  border-radius: 24px;
+  padding: 25px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 90px;
+}
+
+.profile-form::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5%;
+  width: 100%;
+  border-radius: 24px 24px 0 0;
+  background-color: #009c42;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: var(--color);
+}
+h2{
+  color: var(--color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="file"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.buttons .button {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 24px;
+  margin: 0 10px;
+  padding: 8px 24px;
+  background-color: #009c42;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttons .button:hover {
+  background-color: rgb(14, 131, 241)
+}
+
+
+
+
+
+.file-input {
+  width: 350px;
+  max-width: 100%;
+  color: var(--color);
+  padding: 2px;
+  background: var(--card-background);
+  border-radius: 10px;
+  border: 1px solid rgba(8, 8, 8, 0.288);
+}
+
+.file-input::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #009c42;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #009c42;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--color);
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+.file-input::file-selector-button:hover {
+  background: #0077ff;
+}
+
+
+/* From Uiverse.io by Mhyar-nsi */ 
+button {
+  background-color: #0077ff;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 100px;
+  height: 45px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #3b82f6;
+  /* box-shadow: 0 0 0 5px #3b83f65f; */
+  color: #fff;
+}
+
+
+
+/* modal */
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--background);
+  width: 100%;
+  color: var(--color);
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+ 
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #009c42;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #009c42;
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+
+
+
+.note{
+    background-color: #ff3d2f;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  width: 50px;
+  height: 30px;
+  transition: 0.3s;
+}
+
+.note:hover {
+  background-color: #ff3d2f;
+  /* box-shadow: 0 0 0 5px #3b83f65f; */
+  color: #fff;
+}
+
+.notealert{
+  color: #ff3d2f;
+}

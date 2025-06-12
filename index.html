@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile Card UI Design</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="shortcut icon" href="assets/must.ico" type="image/x-icon">
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" />
+</head>
+<body class="dark-mode">
+  <nav>
+    <div class="navbar">
+            <img src="assets/must.png" width="45px" alt="">
+      <div class="logo"><a href="#">Muster Card</a></div>
+      <!-- <div class="logo"><a href="#">Muster Card</a></div> -->
+      <ul class="menu">
+        <!-- From Uiverse.io by vinodjangid07 --> 
+        <span> <img src="assets/light_mode_24dp_E8EAED.svg" alt=""></span>
+        <input type="checkbox" id="checkboxInput">
+        <label for="checkboxInput" class="toggleSwitch">
+        </label>
+        <span> <img src="assets/dark_mode_24dp_E8EAED.svg" alt=""></span>
+        <li><a href="assets/profile.html">Profile</a></li>
+<button class="note" id="myBtn">note</button>
+
+      </ul>
+    </div>
+  </nav>
+  <div class="profile-card">
+    <!-- Profile Image -->
+    <div class="image">
+      <img src="assets/picture.png" alt="Profile Image" class="profile-img" id="profile-image-data" />
+    </div>
+    <!-- Profile Details -->
+    <div class="text-data">
+      <span class="name" id="name-data">name</span>
+      <span class="job" id="id-data">id</span>
+      <span class="job" id="faculty-data">Faculty</span>
+      <span class="job" id="major-data">Major </span>
+    </div>
+    <!-- Subscribe and Message Buttons -->
+    <div class="buttons">
+      <button onclick="banner()" class="button">Banner</button>
+      <button onclick="smart()" class="button">Smart</button>
+    </div>
+  </div>
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 class="notealert">* Note *</h2>
+    </div>
+    <div class="modal-body">
+      <p>this website let you create custom card for Must university</p>
+      <p>i made this website just for fun</p>
+    </div>
+    <!-- <div class="modal-footer">
+      <h3>Modal Footer</h3> -->
+    <!-- </div> -->
+  </div>
+
+</div>
+<!-- Your existing HTML code -->
+<script>
+    window.onload = function () {
+      const profileData = JSON.parse(localStorage.getItem('profileData'));
+      if (profileData) {
+        document.getElementById('name-data').textContent = profileData.name;
+        document.getElementById('id-data').textContent = profileData.id;
+        document.getElementById('faculty-data').textContent = profileData.faculty;
+        document.getElementById('major-data').textContent = profileData.major;
+        const profileImage = document.getElementById('profile-image-data');
+        if (profileData.profileImage) {
+          profileImage.src = profileData.profileImage; // Set base64 image as src
+          profileImage.style.objectFit = 'cover';
+          profileImage.style.borderRadius = '50%';
+          profileImage.style.border = '3px solid #fff';
+        }
+      }
+    };
+  </script>
+  <script>
+    function banner() {
+      window.location.href = "https://register.must.edu.eg/StudentRegistrationSsb/ssb/registration";
+    }
+    function smart() {
+      window.location.href = "https://smartlearning.must.edu.eg";
+    }
+  </script>
+  <script src="assets/script.js"></script>
+
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
