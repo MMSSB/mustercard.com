@@ -1,0 +1,524 @@
+:root {
+      --bg-primary: #ffffff;
+    --primary: #022461;
+    --bg-tertiary: #F3F4F6;
+    --bg-card: #ffffff;
+    --text-primary: #1F2937;
+    --text-secondary: #4B5563;
+    --text-accent: #0059ff;
+    --border-color: #E5E7EB;
+    --logout-bg: #EF4444;
+    --toggle-bg-off: #E5E7EB;
+    --toggle-bg-on: #0059ff;
+    --switch: #2a65c3;
+}
+a{
+    text-decoration: none;
+}
+html.dark {
+        --primary: #262a33;
+    --bg-primary: #201f27;
+    --bg-tertiary: #262628;
+    --bg-card: #3a3b3d;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --text-accent: #0059ff;
+    --switch: #2a65c3;
+    --border-color: #374151;
+    --toggle-bg-off: #4B5563;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+    /* No need for margin-top with sticky positioning */
+}
+
+.app-container {
+    /* Ensure full height minus any fixed elements */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+header h1 {
+    font-size: 1.25rem;
+    margin: 0;
+        font-weight: 500;
+
+}
+
+.notification {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #EF4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+#settings-page h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.setting-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.setting-row {
+    background-color: var(--bg-card);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+border-color:var(--border-color) ;
+
+}
+
+.setting-row span:first-child {
+    font-weight: 500;
+}
+
+.logout-btn {
+    background-color: var(--logout-bg);
+    color: white;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 51px;
+    height: 31px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--toggle-bg-off);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 27px;
+    width: 27px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--switch);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+
+}
+
+.nav-btn.active {
+    color: var(--text-accent);
+}
+
+.material-icons {
+    font-size: 24px;
+}
+/* Add this to both CSS files */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-primary);
+    display: flex;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    .nav {
+        width: auto;
+        max-width: 24rem;
+        left: 50%;
+        transform: translateX(-50%);
+        /* border-radius: 30px 30px 0 0; */
+        overflow: hidden;
+    }
+}
+
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: var(--text-primary);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+    color: var(--text-accent);
+}
+
+.nav__link--active {
+    color: var(--text-accent);
+}
+
+.nav__icon {
+    font-size: 24px;
+}
+.nav__link i {
+    font-size: x-large;
+}
+
+
+/* Add these at the end of the file */
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    
+    main {
+        padding: 2rem;
+    }
+    
+    .info-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .profile-card {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .nav {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 24rem;
+    }
+}
+
+@media (max-width: 360px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .greeting-section h2 {
+        font-size: 1rem;
+    }
+    
+    .nav__icon {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .greeting-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .info-card p {
+        font-size: 1rem;
+    }
+}
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: var(--bg-card2);
+    }
+    
+    .app-container {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        min-height: 95vh;
+        margin-top: 2.5vh;
+        margin-bottom: 2.5vh;
+    }
+}
+/* Add these at the end of the file */
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    main {
+        padding: 2rem;
+    }
+    
+    .setting-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+    }
+    
+    .nav {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 24rem;
+    }
+}
+/* Profile Form Styles */
+.profile-form {
+    background-color: var(--bg-card);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    /* color: #ffffff; */
+}
+
+.form-group input {
+    width: 90%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+}
+
+.image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#profile-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    border: 3px solid var(--primary);
+}
+
+#profile-image {
+    display: none;
+}
+
+.upload-btn {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.upload-btn:hover {
+    background-color: var(--text-accent);
+}
+
+.save-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+}
+
+.save-btn:hover {
+    background-color: var(--text-accent);
+}
+
+
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--bg-tertiary);
+  width: 100%;
+  color: var(--color);
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+ 
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--primary);
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}

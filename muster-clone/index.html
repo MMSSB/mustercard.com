@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MUSTER - Home</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="fonts/remixicon.css">
+            <link rel="stylesheet" href="icon/iconfont/material-icons.css">
+                <link rel="shortcut icon" href="must.ico" type="image/x-icon">
+
+
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <img src="must.png" width="40" height="40" alt="MUSTER Logo">
+            </div>
+            <h1>MUSTER</h1>
+            <div class="notification" id="myBtn"  style="cursor: pointer;">
+                <span class="material-icons" style="color: #EAC452;">notifications</span>
+                <span class="badge">1</span>
+            </div>
+        </header>
+
+        <main>
+            <div id="home-page">
+                <div class="greeting-section">
+<!-- In the greeting section -->
+<h2 id="greeting-text">Good Evening, </h2>
+
+
+                </div>
+                <br>
+                <br>
+
+                <div class="profile-card">
+<!-- In the profile card -->
+<img id="profile-img" src="picture.png" alt="Profile Picture" class="profile-img">
+
+                    <div class="status">
+                        <span class="dot"></span>
+                        <span >Active</span>
+                        <!-- <span class="status-text">Active</span> -->
+                    </div>
+   <p id="faculty-text" class="business-text"></p>
+                </div>
+
+                <div class="info-sections">
+                    <div class="info-card">
+                        <h3>OFFERS | Only for You!</h3>
+                        <p>Currently, there are no offers available. Stay tuned for new offers.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Upcoming events</h3>
+                        <p>Currently, there are no upcoming events scheduled. Stay tuned for future updates and exciting activities.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Recent News</h3>
+                        <p>No recent news.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- <footer>
+            <button class="nav-btn active" data-page="home">
+                <span class="material-icons">home</span>
+                <span>Home</span>
+            </button>
+            <button class="nav-btn" data-page="profile">
+                <span class="material-icons">person</span>
+                <span>Profile</span>
+            </button>
+            <button class="nav-btn" data-page="menu">
+                <span class="material-icons">apps</span>
+                <span>Menu</span>
+            </button>
+            <button class="nav-btn" data-page="transfers">
+                <span class="material-icons">swap_horiz</span>
+                <span>Transfers</span>
+            </button>
+            <button class="nav-btn" data-page="settings">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+            </button>
+        </footer>
+    </div> -->
+<nav class="nav">
+  <a href="index.html" class="nav__link nav__link--active ">
+<span class="material-icons">
+home
+</span>
+                <!-- <span>Home</span> -->
+  </a>
+  <a href="#" class="nav__link ">
+                <!-- <span class="material-icons">person</span> -->
+                                  <i class="ri-account-circle-line"></i>
+
+                <!-- <span>Profile</span> -->
+  </a>
+  <a href="#" class="nav__link">
+                <span class="material-icons">apps</span>
+                <!-- <span>Menu</span> -->
+  </a>
+  <a href="#" class="nav__link">
+                <span class="material-icons">social_distance</span>
+                <!-- <span class="material-icons">swap_horiz</span> -->
+                <!-- <span>Transfers</span> -->
+                
+  </a>
+  <a href="settings.html" class="nav__link ">
+    <!-- <i class="ri-settings-4-fill"></i> -->
+    <i class="material-icons nav__icon">settings</i>
+    <!-- <span class="nav__text">Settings</span> -->
+  </a>
+</nav>
+    <!-- <script src="script.js"></script> -->
+         <!-- Subscribe and Message Buttons -->
+
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 class="notealert">* Note *</h2>
+    </div>
+    <div class="modal-body">
+      <p>this website let you create custom card for Must university</p>
+      <p>i made this website just for fun</p>
+    </div>
+    <!-- <div class="modal-footer">
+      <h3>Modal Footer</h3> -->
+    <!-- </div> -->
+     <br>
+<br>
+<br>
+<br>
+  </div>
+
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Load profile data
+    const profileData = JSON.parse(localStorage.getItem('profileData'));
+    
+    if (profileData) {
+        // Update greeting
+        const greetingText = document.getElementById('greeting-text');
+        if (profileData.name) {
+            greetingText.textContent = `Good Evening, ${profileData.name}`;
+        }
+        
+        // Update profile image
+        const profileImg = document.getElementById('profile-img');
+        if (profileData.image) {
+            profileImg.src = profileData.image;
+        }
+        
+        // Update faculty text
+        const facultyText = document.getElementById('faculty-text');
+        if (profileData.faculty) {
+            facultyText.textContent = profileData.faculty.toUpperCase();
+        }
+    }
+
+    // Dark mode functionality
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    
+    // Check if dark mode is enabled in localStorage
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) darkModeToggle.checked = true;
+    }
+    
+    // If no preference is set, check system preference
+    else if (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+        if (darkModeToggle) darkModeToggle.checked = true;
+    }
+    
+    // Add event listener if toggle exists on this page
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+    }
+});
+</script>
+  <script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>

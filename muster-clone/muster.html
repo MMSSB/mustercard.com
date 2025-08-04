@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muster App Clone</title>
+    
+    <style>
+        /* Custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        /* CSS Variables for theming */
+        :root {
+            --bg-primary: #022461;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F3F4F6;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --text-accent: #4F46E5;
+            --border-color: #E5E7EB;
+            --profile-img-border: #FFFFFF;
+            --icon-color: #4B5563;
+            --bottom-nav-height: 60px;
+        }
+
+        html.dark {
+            --bg-primary: #111827;
+            --bg-secondary: #1F2937;
+            --bg-tertiary: #374151;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --text-accent: #818CF8;
+            --border-color: #374151;
+            --profile-img-border: #1F2937;
+            --icon-color: #D1D5DB;
+        }
+
+        /* Base and Layout */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 0;
+            padding-bottom: var(--bottom-nav-height); /* Space for bottom nav */
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 24rem; /* 384px */
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        main {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            padding-bottom: 1rem; /* Extra space at bottom */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-primary);
+        }
+
+        header .logo {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #D1D5DB;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        html.dark header .logo {
+            background-color: #4B5563;
+        }
+        header .logo svg {
+            color: var(--icon-color);
+        }
+
+        header h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        header .notification {
+            position: relative;
+        }
+        header .notification svg {
+            color: var(--icon-color);
+        }
+        header .notification .badge {
+            position: absolute;
+            top: -0.25rem;
+            right: -0.25rem;
+            background-color: #EF4444;
+            color: white;
+            font-size: 0.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+        }
+
+        /* Home Page Content */
+        #home-page h2 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .profile-card {
+            margin-top: 1rem;
+            background-color: var(--bg-tertiary);
+            border-radius: 1rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 9999px;
+            margin: 0 auto;
+            border: 4px solid var(--profile-img-border);
+            margin-top: -4rem; 
+        }
+
+        .profile-card .status {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .profile-card .status .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            background-color: #22C55E;
+            border-radius: 9999px;
+        }
+
+        .profile-card .status .text {
+            color: #22C55E;
+            font-weight: 600;
+        }
+
+        .profile-card .business-text {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-top: 0.25rem;
+        }
+
+        .info-sections {
+            margin-top: 2rem;
+        }
+        .info-sections > div:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+        .info-sections h3 {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .info-sections p {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        /* Settings Page */
+        #settings-page h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .setting-row {
+            background-color: var(--bg-tertiary);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .setting-row span {
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.625rem;
+            border-radius: 0.5rem;
+            color: var(--text-secondary);
+        }
+        #theme-toggle:hover {
+            background-color: #E5E7EB;
+        }
+        html.dark #theme-toggle:hover {
+            background-color: #4B5563;
+        }
+        #theme-toggle svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            fill: currentColor;
+        }
+
+        /* Footer Navigation */
+        footer {
+            display: none; /* Hide the original footer */
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: var(--bottom-nav-height);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: var(--bg-secondary);
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .bottom-nav .nav-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            padding: 0.5rem;
+            flex: 1;
+            text-align: center;
+        }
+
+        .bottom-nav .nav-link img {
+            height: 24px;
+            width: 24px;
+            margin-bottom: 2px;
+            transition: transform 0.3s;
+            filter: brightness(0) saturate(100%) invert(39%) sepia(9%) saturate(1230%) hue-rotate(177deg) brightness(91%) contrast(87%);
+        }
+        
+        html.dark .bottom-nav .nav-link img {
+            filter: brightness(0) saturate(100%) invert(80%) sepia(6%) saturate(348%) hue-rotate(173deg) brightness(89%) contrast(88%);
+        }
+
+        .bottom-nav .nav-link span {
+            font-size: 0.7rem;
+        }
+
+        /* Hover effect for non-active links */
+        .bottom-nav .nav-link:hover {
+            color: var(--text-accent);
+        }
+
+        /* Hover effect specifically for the icon */
+        .bottom-nav .nav-link:hover img {
+            transform: scale(1.1);
+            filter: brightness(0) saturate(100%) invert(39%) sepia(59%) saturate(2944%) hue-rotate(228deg) brightness(94%) contrast(91%);
+        }
+
+        /* Active link styling */
+        .bottom-nav .nav-link.active {
+            color: var(--text-accent);
+        }
+
+        /* Active and hover effect for active link */
+        .bottom-nav .nav-link.active img {
+            filter: brightness(0) saturate(100%) invert(39%) sepia(59%) saturate(2944%) hue-rotate(228deg) brightness(94%) contrast(91%);
+        }
+
+        /* Settings Page */
+        #settings-page .setting-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .setting-row {
+            background-color: var(--bg-tertiary);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 48px;
+        }
+        .setting-row span {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+        .setting-row .icon {
+            color: var(--icon-color);
+        }
+        .logout-btn {
+            background-color: #EF4444;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .logout-btn .icon {
+            color: white;
+        }
+
+        /* Custom Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 51px;
+            height: 31px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 27px;
+            width: 27px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #4F46E5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .app-container {
+                max-width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+            
+            .bottom-nav {
+                display: none;
+            }
+            
+            footer {
+                display: flex;
+                justify-content: space-around;
+                padding: 0.5rem;
+                border-top: 1px solid var(--border-color);
+                background-color: var(--bg-secondary);
+            }
+            
+            body {
+                padding-bottom: 0;
+            }
+            
+            .nav-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: var(--text-secondary);
+            }
+
+            .nav-btn svg {
+                width: 1.5rem;
+                height: 1.5rem;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+            .nav-btn span {
+                font-size: 0.75rem;
+            }
+            .nav-btn.active {
+                color: var(--text-accent);
+            }
+            .nav-btn.active span {
+                font-weight: 700;
+            }
+        }
+
+        /* Material icon adjustments */
+        .material-symbols-outlined {
+            font-size: 1.5rem;
+            color: var(--icon-color);
+        }
+        .nav-btn.active .material-symbols-outlined {
+            color: var(--text-accent);
+        }
+    </style>
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+      } else {
+          document.documentElement.classList.remove('dark')
+      }
+    </script>
+</head>
+<body>
+    <!-- Settings Page Content (Initially hidden) -->
+    <div id="settings-page" class="hidden">
+         <div class="setting-list">
+            <div class="setting-row">
+                <span>Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <span>Timetable Notification</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <span>Community Notifications</span>
+                <label class="switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <span>Update Information</span>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
+                </div>
+            </div>
+            <div class="setting-row logout-btn">
+                <span>Logout</span>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                </div>
+            </div>
+         </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="must.png" width="40" height="40" alt="">
+            </div>
+            <h1>MUSTER</h1>
+            <div class="notification">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+                <span class="badge">6</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Home Page Content -->
+            <div id="home-page">
+                <div class="head">
+                    <div class="try">
+                        <h2>Good Evening, Mohamed</h2>
+                    </div>
+                </div>
+                
+                <br>
+
+                <div class="profile-card">
+                    <img src="mmssb.jpg" alt="Profile Picture">
+                    <div class="status">
+                        <span class="dot"></span>
+                        <span class="text">Active</span>
+                    </div>
+                    <p class="business-text">BUSINESS</p>
+                </div>
+                <div class="info-sections">
+                    <div>
+                        <h3>OFFERS | Only for You!</h3>
+                        <p>Currently, there are no offers available. Stay tuned for new offers.</p>
+                    </div>
+                    <div>
+                        <h3>Upcoming events</h3>
+                        <p>Currently, there are no upcoming events scheduled. Stay tuned for future updates and exciting activities.</p>
+                    </div>
+                    <div>
+                        <h3>Recent News</h3>
+                        <p>No recent news.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page Content (Initially hidden) -->
+            <div id="settings-page" class="hidden">
+                 <h2>Settings</h2>
+                 <div class="setting-row">
+                     <span>Dark Mode</span>
+                     <button id="theme-toggle" type="button">
+                        <svg id="theme-toggle-dark-icon" class="hidden" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                        
+                        <svg id="theme-toggle-light-icon" class="hidden" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                    </button>
+                 </div>
+            </div>
+        </main>
+
+        <!-- Footer Navigation (hidden on mobile) -->
+        <footer>
+            <button data-page="home-page" class="nav-btn">
+                <svg><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Home</span>
+            </button>
+            <button class="nav-btn">
+                <svg><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>Profile</span>
+            </button>
+            <button class="nav-btn">
+                <svg><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                <span>Menu</span>
+            </button>
+            <button class="nav-btn">
+                <svg><path d="m17 2 4 4-4 4"/><path d="M3 12h18"/><path d="m7 22-4-4 4-4"/><path d="M21 12H3"/></svg>
+                <span>Transfers</span>
+            </button>
+            <button data-page="settings-page" class="nav-btn">
+                <span class="material-symbols-outlined">settings</span>
+                <span>Settings</span>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Bottom Navigation (mobile only) -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-link" data-page="home-page">
+            <img src="bott/iconbott/home_24dp_E8EAED.svg" alt="Home"> 
+            <span>Home</span>
+        </a>
+        <a href="colleges.html" class="nav-link">
+            <img src="bott/iconbott/school_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="colleges">
+            <span>Colleges</span>
+        </a>
+        <a href="serv.html" class="nav-link">
+            <img src="bott/iconbott/dns_24dp_E8EAED.svg" alt="Gallery">
+            <span>Services</span>
+        </a>
+        <a href="calc.html" class="nav-link">
+            <img src="bott/iconbott/calculate_24dp_E8EAED.svg" alt="About">
+            <span>GPA Calculator</span>
+        </a>
+        <a href="about.html" class="nav-link">
+            <img src="bott/iconbott/bolt_24dp_E8EAED.svg" alt="About"> 
+            <span>About</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- THEME TOGGLE LOGIC ---
+            const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+            // Function to apply the saved theme and update the toggle
+            function applyTheme() {
+                if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                    if (darkModeToggle) darkModeToggle.checked = true;
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (darkModeToggle) darkModeToggle.checked = false;
+                }
+            }
+
+            // Listen for toggle clicks
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('change', () => {
+                    if (darkModeToggle.checked) {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('color-theme', 'dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('color-theme', 'light');
+                    }
+                });
+            }
+
+            // --- PAGE NAVIGATION LOGIC ---
+            const navButtons = document.querySelectorAll('.nav-btn, .bottom-nav .nav-link');
+            const pages = {
+                'home-page': document.getElementById('home-page'),
+                'settings-page': document.getElementById('settings-page'),
+                'profile-page': document.getElementById('profile-page'),
+                'menu-page': document.getElementById('menu-page'),
+                'transfers-page': document.getElementById('transfers-page'),
+            };
+            const allPageDivs = Object.values(pages);
+
+            function switchPage(pageId) {
+                allPageDivs.forEach(page => {
+                    if (page) page.classList.add('hidden');
+                });
+
+                if (pages[pageId]) {
+                    pages[pageId].classList.remove('hidden');
+                }
+
+                navButtons.forEach(button => {
+                    const btnPage = button.dataset.page;
+                    if (btnPage) {
+                        button.classList.toggle('active', btnPage === pageId);
+                    }
+                });
+            }
+
+            navButtons.forEach(button => {
+                const pageId = button.dataset.page;
+                if (pageId) {
+                    button.addEventListener('click', (e) => {
+                        if (button.tagName === 'A') {
+                            e.preventDefault();
+                        }
+                        switchPage(pageId);
+                    });
+                }
+            });
+
+            // Initialize to the home page and apply theme
+            switchPage('home-page');
+            applyTheme();
+            
+            // Set active link based on current page
+            const currentPath = window.location.pathname.split('/').pop();
+            const bottomNavLinks = document.querySelectorAll('.bottom-nav .nav-link');
+            bottomNavLinks.forEach(link => {
+                const linkPath = link.getAttribute('href');
+                if (linkPath === currentPath || 
+                    (currentPath === 'index.html' && linkPath === '#') ||
+                    (currentPath === '' && linkPath === '#')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

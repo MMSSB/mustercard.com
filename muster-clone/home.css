@@ -1,0 +1,441 @@
+:root {
+      --bg-primary: #ffffff;
+    --primary: #022461;
+    --bg-tertiary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #1F2937;
+    --text-secondary: #4B5563;
+    --text-accent: #0059ff;
+    --border-color: #E5E7EB;
+    --logout-bg: #EF4444;
+    --toggle-bg-off: #E5E7EB;
+    --toggle-bg-on: #0059ff;
+    --switch: #2a65c3;
+    --active-color: #22C55E;
+        --bg-card2: #f1f2f6;
+
+}
+a{
+    text-decoration: none;
+}
+html.dark {
+        --primary: #262a33;
+    --bg-primary: #201f27;
+    --bg-tertiary: #3a3b3d;
+    --bg-card: #3a3b3d;
+    --bg-card2: #262628;
+    --text-primary: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --text-accent: #0059ff;
+    --switch: #2a65c3;
+    --border-color: #374151;
+    --toggle-bg-off: #4B5563;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 auto;
+    background-color: var(--bg-card2);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+    /* No need for margin-top with sticky positioning */
+}
+
+.app-container {
+    /* Ensure full height minus any fixed elements */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header h1 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: white;
+    font-weight: 500;
+}
+
+.notification {
+    position: relative;
+    color: white;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #EF4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+/* Home Page Styles */
+.greeting-section h2 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.profile-card {
+    background-color: var(--bg-tertiary);
+    border-radius: 1rem;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.profile-img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    /* border: 4px solid var(--profile-border); */
+    margin-top: -4.5rem;
+    object-fit: cover;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: var(--active-color);
+    border-radius: 50%;
+}
+
+.status-text {
+    color: var(--active-color);
+    font-weight: 600;
+}
+
+.business-text {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+.info-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+/* 
+.info-card {
+    background-color: var(--bg-tertiary);
+    border-radius: 0.75rem;
+    padding: 1rem;
+} */
+
+.info-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+        font-weight: 400;
+
+}
+
+.info-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+    
+}
+
+/* Footer Navigation */
+footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.nav-btn.active {
+    color: var(--text-accent);
+}
+
+.nav-btn .material-icons {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+/* Add this to both CSS files */
+.nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-primary);
+    display: flex;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+@media (min-width: 768px) {
+    .nav {
+        width: auto;
+        max-width: 24rem;
+        left: 50%;
+        transform: translateX(-50%);
+        /* border-radius: 30px 30px 0 0; */
+        overflow: hidden;
+    }
+}
+.nav__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    min-width: 50px;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: var(--text-primary);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.nav__link:hover {
+    color: var(--text-accent);
+}
+
+.nav__link--active {
+    color: var(--text-accent);
+}
+
+.nav__icon {
+    font-size: 18px;
+}
+.nav__link i {
+    font-size: x-large;
+}
+
+/* Add these at the end of the file */
+
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    
+    main {
+        padding: 2rem;
+    }
+    
+    .info-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .profile-card {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .nav {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 24rem;
+    }
+}
+
+@media (max-width: 360px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .greeting-section h2 {
+        font-size: 1rem;
+    }
+    
+    .nav__icon {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1024px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .greeting-section h2 {
+        font-size: 1.25rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1.125rem;
+    }
+    
+    .info-card p {
+        font-size: 1rem;
+    }
+}
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        background-color: var(--bg-card2);
+    }
+    
+    .app-container {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        min-height: 95vh;
+        margin-top: 2.5vh;
+        margin-bottom: 2.5vh;
+    }
+}
+/* modal */
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--bg-tertiary);
+  width: 100%;
+  color: var(--color);
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+ 
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--primary);
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--primary);
+  /* background-color: #009c42; */
+  color: white;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+  from {bottom: -300px; opacity: 0} 
+  to {bottom: 0; opacity: 1}
+}
+
+@keyframes slideIn {
+  from {bottom: -300px; opacity: 0}
+  to {bottom: 0; opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
