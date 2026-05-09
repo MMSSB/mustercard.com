@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MUSTER - Home</title>
+        <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="fonts/remixicon.css">
+            <link rel="stylesheet" href="icon/iconfont/material-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo-section">
+                <img src="must.png" alt="MUSTER" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/2/23/Misr_University_for_Science_and_Technology_logo.png'">
+                <h1>MUSTER</h1>
+            </div>
+            <div class="notification" id="myBtn" style="cursor: pointer;">
+                <span class="material-icons">notifications</span>
+                <span class="badge">1</span>
+            </div>
+        </header>
+
+        <div class="home-hero">
+            <div class="hero-top-wrapper">
+                
+                <div class="hero-left-content">
+                    <div class="greeting">
+                        <i class="ri-moon-fill"></i> <span id="greeting-time">Good Afternoon</span>
+                    </div>
+                    <h2 id="home-name">Mohamed</h2>
+                    
+                    <div class="user-badges">
+                        <div class="badge-pill active">
+                            <span class="dot"></span> Active
+                        </div>
+                        <div class="badge-pill">
+                            <i class="ri-profile-line"></i> <span id="home-id">200028249</span>
+                        </div>
+                        
+                        <div class="break-line"></div>
+                        
+                        <div class="badge-pill cgpa">
+                            <i class="ri-graduation-cap-line"></i> CGPA <span id="home-cgpa">3.35</span>
+                        </div>
+                    </div>
+                </div>
+
+                <img id="home-profile-img" src="picture.png" alt="Profile" class="hero-profile-img">
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <strong><i class="ri-calendar-event-line"></i> <span id="home-semester">Spring-2026</span></strong>
+                    <span>Semester</span>
+                </div>
+                <div class="stat-item">
+                    <strong><i class="ri-book-open-line"></i> <span id="home-credits">150/165</span></strong>
+                    <span>Credit Hrs</span>
+                </div>
+                <div class="stat-item">
+                    <strong><i class="ri-trophy-line"></i> <span id="home-rank">15</span></strong>
+                    <span>Rank</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-wrapper"><i class="ri-price-tag-3-line"></i></div>
+                    OFFERS | Only for You!
+                </div>
+                <p>Currently, there are no offers available. Stay tuned for new offers.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-wrapper"><i class="ri-calendar-check-line"></i></div>
+                    Upcoming events
+                </div>
+                <p>Currently, there are no upcoming events scheduled. Stay tuned for future updates and exciting activities.</p>
+            </div>
+            
+            <div class="card" style="margin-bottom: 60px;">
+                <div class="card-header">
+                    <div class="icon-wrapper"><i class="ri-newspaper-line"></i></div>
+                    Recent News
+                </div>
+                <img src="https://i.imgur.com/your-news-image.jpg" class="news-img" alt="Intangible Heritage Festival" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- <nav class="nav">
+            <a href="index.html" class="nav__link nav__link--active">
+                <i class="ri-home-5-fill"></i> <span>Home</span>
+            </a>
+            <a href="profile.html" class="nav__link">
+                <i class="ri-user-line"></i> <span>Profile</span>
+            </a>
+            <a href="#" class="nav__link">
+                <i class="ri-grid-fill"></i> <span>Services</span>
+            </a>
+            <a href="#" class="nav__link">
+                <i class="ri-group-line"></i> <span>Community</span>
+            </a>
+            <a href="settings.html" class="nav__link">
+                <i class="material-icons nav__icon"></i> <span>Settings</span>
+            </a>
+        </nav> -->
+        <nav class="nav">
+    <a href="index.html" class="nav__link nav__link--active">
+        <i class="material-icons">home</i> <span>Home</span>
+    </a>
+    <a href="profile.html" class="nav__link">
+        <i class="material-icons">person</i> <span>Profile</span>
+    </a>
+    <a href="#" class="nav__link">
+        <i class="material-icons">grid_view</i> <span>Services</span>
+    </a>
+    <a href="#" class="nav__link">
+        <i class="material-icons">groups</i> <span>Community</span>
+    </a>
+    <a href="settings.html" class="nav__link">
+        <i class="material-icons">settings</i> <span>Settings</span>
+    </a>
+</nav>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>* Note *</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>This website lets you create custom MUSTER App for Must University.</p>
+                    <p>I made this website just for fun!</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
